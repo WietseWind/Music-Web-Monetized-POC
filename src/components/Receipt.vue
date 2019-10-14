@@ -16,7 +16,9 @@
         </div>
         <div class="h6 py-0 pt-1 my-0">
           <a :href="'https://twitter.com/' + pointer.split('/')[1]" target="_blank" class="d-inline" :class="{ 'text-white': pointer === active }">
-            <i class="fab fa-twitter"></i> {{ pointer }}
+            <i class="fab fa-twitter"></i> &nbsp;
+            <span class="d-none d-md-inline-block">{{ pointer }}</span>
+            <span class="d-inline-block d-md-none">{{ pointer.split('/')[1] }}</span>
           </a>
           <small v-if="pointer.match(/WietseWind/)" class="d-none d-sm-inline"> (when paused)</small>
         </div>
