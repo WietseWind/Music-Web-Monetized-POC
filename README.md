@@ -1,4 +1,8 @@
-# webmon-audio
+# Music, Web Monetized
+
+Proof of concept.
+
+https://dist.wietse.now.sh
 
 ## Project setup
 ```
