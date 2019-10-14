@@ -55,6 +55,12 @@ export default {
     },
     handleMonetizationProgress (e) {
       this.wmStarted = true
+      // Puma Browser doesn't confirm paymentPointer in event
+      if (typeof e.detail.assetCode !== 'undefined' && typeof e.detail.paymentPointer === 'undefined') {
+        Object.assign(e.detail, {
+          paymentPointer: this.activePaymentPointer
+        })
+      }
       if (typeof this.receipts[e.detail.paymentPointer] === 'undefined') {
         this.receipts[e.detail.paymentPointer] = {}
       }
@@ -66,11 +72,11 @@ export default {
     },
     monetize () {
       let metaTag = document.querySelector('meta[name="monetization"]')
-      if (!metaTag) {
-        metaTag = document.createElement('meta')
-        metaTag.setAttribute('name', 'monetization')
-        document.getElementsByTagName('head')[0].appendChild(metaTag)
-      }
+      // if (!metaTag) {
+      //   metaTag = document.createElement('meta')
+      //   metaTag.setAttribute('name', 'monetization')
+      //   document.getElementsByTagName('head')[0].appendChild(metaTag)
+      // }
 
       metaTag.setAttribute('content', this.activePaymentPointer)
     }
@@ -85,16 +91,27 @@ export default {
     }
   },
   created () {
-    if (typeof document.monetization !== 'undefined') {
-      this.wmCapable = true
+    const installWebMonetization = () => {
       document.monetization.addEventListener('monetizationprogress', this.handleMonetizationProgress)
       this.monetize()
+    }
+    if (typeof document.monetization !== 'undefined') {
+      installWebMonetization()
+    } else {
+      setTimeout(() => {
+        // Still no monetization (So no Puma Browser Injection)
+        if (typeof document.monetization === 'undefined') {
+          this.wmCapable = false
+        } else {
+          installWebMonetization()
+        }
+      }, 750)
     }
   },
   data () {
     return {
       ready: false,
-      wmCapable: false,
+      wmCapable: true,
       wmStarted: false,
       paymentPointer: {
         default: '$twitter.xrptipbot.com/WietseWind',
