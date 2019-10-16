@@ -134,7 +134,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-    padding-bottom: 35px;
+    padding-bottom: 50px;
 
     &.container {
       padding-top: 30px;
@@ -159,5 +159,10 @@ export default {
     left: 0;
     right: 0;
     padding-bottom: 3px;
+    background-color: #fff;
+    border-top: 1px solid #f0f0f0;
+    z-index: 10;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.07), 0 1px 5px 0 rgba(0,0,0,.1);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.07), 0 1px 5px 0 rgba(0,0,0,.1);
   }
 </style>
