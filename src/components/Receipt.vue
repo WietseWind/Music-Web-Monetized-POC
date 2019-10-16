@@ -16,7 +16,9 @@
         </div>
         <div class="h6 py-0 pt-1 my-0">
           <a :href="'https://twitter.com/' + pointer.split('/')[1]" target="_blank" class="d-inline" :class="{ 'text-white': pointer === active }">
-            <i class="fab fa-twitter"></i> &nbsp;
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a :href="'https://www.xrptipbot.com/n:twitter/u:' + pointer.split('/')[1]" target="_blank" class="ml-2 d-inline" :class="{ 'text-white': pointer === active }">
             <span class="d-none d-md-inline-block">{{ pointer }}</span>
             <span class="d-inline-block d-md-none">{{ pointer.split('/')[1] }}</span>
           </a>
