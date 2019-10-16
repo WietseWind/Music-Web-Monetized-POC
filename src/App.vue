@@ -154,7 +154,6 @@ export default {
   }
 
   #footer {
-    border: 1px solid red;
     position: fixed;
     bottom: 0;
     left: 0;
