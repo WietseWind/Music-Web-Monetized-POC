@@ -23,7 +23,7 @@
         :audio="audio" :lrcType="0" :mini="false"
         :autoplay="true"
         :theme="theme" :loop="'all'" :preload="'auto'"
-        :volume="0.8" :listFolded="false" :listMaxHeight="190"
+        :volume="0.8" :listFolded="false" :listMaxHeight="500"
         @play="handle"
         @playing="handle"
         @progress="handle"
@@ -33,6 +33,8 @@
         @suspend="handle"
         @stalled="handle"
       />
+
+      <small class="text-muted text-center d-block mt-2">Songs from <a href="https://www.jamendo.com">jamendo.com</a></small>
     </div>
   </div>
 </template>
@@ -92,7 +94,9 @@ export default {
       require('../assets/1.mp3'),
       require('../assets/2.mp3'),
       require('../assets/3.mp3'),
-      require('../assets/4.mp3')
+      require('../assets/4.mp3'),
+      require('../assets/5.mp3'),
+      require('../assets/6.mp3')
     ]
 
     Promise.all(songs.reduce((all, current) => {
