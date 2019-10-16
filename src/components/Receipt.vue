@@ -10,7 +10,7 @@
           <button v-for="(amount, currency) in value" class="btn btn-light py-0 px-1" :class="{ 'text-dark': pointer === active, 'text-secondary': pointer !== active }" v-bind:key="currency">
             {{ currency }}
             <span class="badge" :class="{ 'badge-primary': pointer === active, 'badge-light text-secondary': pointer !== active }">
-              <b>{{ amount.toFixed(5) }}</b>
+              <b><AnimatedInteger :value="amount" :precision="6" :speed="2000" /></b>
             </span>
           </button>
         </div>
@@ -30,14 +30,17 @@
 </template>
 
 <script>
+import AnimatedInteger from '../plugins/AnimatedInteger'
+
 export default {
   name: 'Receipt',
+  components: {
+    AnimatedInteger
+  },
   props: {
     monetizationLog: Object,
     render: Number,
     active: String
-  },
-  components: {
   },
   methods: {
   },
