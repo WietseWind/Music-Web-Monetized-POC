@@ -1,8 +1,11 @@
 <template>
   <div v-if="Object.keys(monetizationLog).length > 0" id="receipt" class="mt-5">
-    <h4 class="text-center">Receipt</h4>
+    <h4 class="text-center">
+      Donation receipt
+      <small id="total" class="d-inline-block"><span class="badge badge-success">USD <b><AnimatedInteger :value="sum" :precision="6" :speed="2000" /></b></span></small>
+    </h4>
     <div class="alert alert-warning text-center">
-      The payment pointers are stored in the <a href="https://en.wikipedia.org/wiki/ID3" target="_blank"><code>comment</code> field in the ID3 tags</a> 🎉
+      The payment pointers are stored in the MP3 files, in the <a href="https://en.wikipedia.org/wiki/ID3" target="_blank"><code>comment</code> field in the ID3 tags</a> 🎉
     </div>
     <ul class="list-group">
       <li v-for="(value, pointer) in monetizationLog" v-bind:key="pointer" class="list-group-item py-1 px-2" :class="{ active: pointer === active }">
@@ -43,22 +46,29 @@ export default {
     active: String
   },
   methods: {
+    computeSum () {
+      this.sum = Object.keys(this.monetizationLog).reduce((a, b) => {
+        return a + this.monetizationLog[b].USD
+      }, 0)
+    }
   },
   watch: {
     render () {
       this.$forceUpdate()
+      this.computeSum()
     }
-  },
-  computed: {
-  },
-  created () {
   },
   data () {
     return {
+      sum: 0
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
+  #total {
+    position: relative;
+    top: -3px;
+  }
 </style>
