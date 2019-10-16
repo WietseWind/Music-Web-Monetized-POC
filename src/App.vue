@@ -134,6 +134,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
+    padding-bottom: 20px;
 
     &.container {
       padding-top: 30px;
@@ -150,5 +151,14 @@ export default {
         }
       }
     }
+  }
+
+  #footer {
+    border: 1px solid red;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 3px;
   }
 </style>
