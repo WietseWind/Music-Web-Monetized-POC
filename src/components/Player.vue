@@ -96,7 +96,8 @@ export default {
       require('../assets/3.mp3'),
       require('../assets/4.mp3'),
       require('../assets/5.mp3'),
-      require('../assets/6.mp3')
+      require('../assets/6.mp3'),
+      require('../assets/7.mp3')
     ]
 
     Promise.all(songs.reduce((all, current) => {
