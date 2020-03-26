@@ -1,4 +1,7 @@
 module.exports = {
+  devServer: {
+    disableHostCheck: true
+  },
   chainWebpack: config => {
     if (process.env.NODE_ENV === 'development') {
       config
